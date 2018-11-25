@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "084d827b4fa67053c6defbfa92e9aaa46fc263bd29c3943130b0c793148ee104"
+            "sha256": "9b390a55622b920a755e36961c4d155a992d814726983241b6453f5cdd69d84f"
         },
         "host-environment-markers": {
             "implementation_name": "cpython",
@@ -27,6 +27,12 @@
         ]
     },
     "default": {
+        "dlib": {
+            "hashes": [
+                "sha256:d1f167054cec10987094861468df9c2c63b07cd97693809bd22e634d62215b26"
+            ],
+            "version": "==19.16.0"
+        },
         "imutils": {
             "hashes": [
                 "sha256:37d17adc9e71386c59b28f4ef5972ef6fe0023714fa1a652b8edc83f7ce0654c"
