@@ -1,3 +1,5 @@
+This aligns faces, with some tuning for a *particular* use case. Primarily cribbed off [this tutorial](https://www.pyimagesearch.com/2017/05/22/face-alignment-with-opencv-and-python/).
+
 ## Setup
 
 ### System
@@ -31,5 +33,14 @@ Then install packages and enter a venv with:
 $ pipenv install
 $ pipenv shell
 ```
+The package install will take a while, because opencv is big, and dlib has to build with cmake.
 
-You could also use the requirements.txt, if you feel like that.
+You could also use whatever python env solution is the flavour of the month.
+
+## Usage
+
+```shell
+$ python align_faces.py --shape-predictor shape_predictor_68_face_landmarks.dat --images photos
+```
+
+
