@@ -8,6 +8,7 @@ import imutils
 import dlib
 import cv2
 import os
+import sys
  
 # construct the argument parser and parse the arguments
 ap = argparse.ArgumentParser()
@@ -53,4 +54,6 @@ for f in listdir_fullpath(folder):
             # display the output images
             cv2.imshow("Original", faceOrig)
             cv2.imshow("Aligned", faceAligned)
-            cv2.waitKey(0)
+            key = cv2.waitKey(0)
+            if key==ord("x"):
+                sys.exit("1")
