@@ -61,9 +61,9 @@ for f in listdir_fullpath(folder):
                 # cv2.imshow("Original", faceOrig)
                 # cv2.imshow("Aligned", faceAligned)
 
-                f_new = f.split(".")[0] + "_aligned.jpg"
-                imwrite(os.path.join(folder, f_new), faceAligned)
+                f_new = f.split(".")[0].split("/")[-1] + "_aligned.jpg"
+                cv2.imwrite(os.path.join(folder, f_new), faceAligned)
                 print("saved image " + f_new)
                 # key = cv2.waitKey(0)
-                if key==ord("x"):
-                    sys.exit("1")
+                # if key==ord("x"):
+                #     sys.exit("1")
