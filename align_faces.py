@@ -26,7 +26,7 @@ def listdir_fullpath(d):
 # the facial landmark predictor and the face aligner
 detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor(args["shape_predictor"])
-fa = FaceAligner(predictor, desiredFaceWidth=256)
+fa = FaceAligner(predictor, desiredFaceWidth=1600)
 
 # load the input image, resize it, and convert it to grayscale
 folder = args["images"]
@@ -54,7 +54,7 @@ for f in listdir_fullpath(folder):
 
             if center_y < 350 and center_x < 600:
 
-                faceOrig = imutils.resize(image[y:y + h, x:x + w], width=256)
+                faceOrig = imutils.resize(image[y:y + h, x:x + w], width=1600)
                 faceAligned = fa.align(image, gray, bigrect)
          
                 # display the output images
