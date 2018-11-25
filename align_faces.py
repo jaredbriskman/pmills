@@ -29,7 +29,7 @@ for f in os.listdir(folder):
     # Only read images
     if not f.endswith(".jpg"):
         continue
-    image = cv2.imread(f)
+    image = cv2.imread(os.path.append(folder, f))
     image = imutils.resize(image, width=800)
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
      
