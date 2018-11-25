@@ -40,9 +40,7 @@ for f in listdir_fullpath(folder):
     image = imutils.resize(image, width=1600)
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
      
-    # show the original input image and detect faces in the grayscale
-    # image
-    # cv2.imshow("Input", image)
+    # detect faces in the grayscale image
     rects = detector(gray, 2)
 
     # loop over the face detections
@@ -59,14 +57,7 @@ for f in listdir_fullpath(folder):
                 faceOrig = imutils.resize(image[y:y + h, x:x + w], width=1600)
                 faceAligned = fa.align(image, gray, bigrect)
          
-                # display the output images
-                # cv2.imshow("Original", faceOrig)
-                # cv2.imshow("Aligned", faceAligned)
-
                 f_new = f.split(".")[0].split("/")[-1] + "_aligned.jpg"
                 output_folder = args["output"]
                 cv2.imwrite(os.path.join(output_folder, f_new), faceAligned)
                 print("saved image " + f_new)
-                # key = cv2.waitKey(0)
-                # if key==ord("x"):
-                #     sys.exit("1")
