@@ -40,7 +40,7 @@ for f in listdir_fullpath(folder):
      
     # show the original input image and detect faces in the grayscale
     # image
-    cv2.imshow("Input", image)
+    # cv2.imshow("Input", image)
     rects = detector(gray, 2)
 
     # loop over the face detections
@@ -58,8 +58,12 @@ for f in listdir_fullpath(folder):
                 faceAligned = fa.align(image, gray, bigrect)
          
                 # display the output images
-                cv2.imshow("Original", faceOrig)
-                cv2.imshow("Aligned", faceAligned)
-                key = cv2.waitKey(0)
+                # cv2.imshow("Original", faceOrig)
+                # cv2.imshow("Aligned", faceAligned)
+
+                f_new = f.split(".")[0] + "_aligned.jpg"
+                imwrite(os.path.join(folder, f_new), faceAligned)
+                print("saved image " + f_new)
+                # key = cv2.waitKey(0)
                 if key==ord("x"):
                     sys.exit("1")
