@@ -16,6 +16,8 @@ ap.add_argument("-p", "--shape-predictor", required=True,
 help="path to facial landmark predictor")
 ap.add_argument("-i", "--images", required=True,
 help="path to image folder")
+ap.add_argument("-o", "--output", required=True,
+help="path to output folder")
 args = vars(ap.parse_args())
 
 #https://stackoverflow.com/questions/120656/directory-tree-listing-in-python
@@ -62,8 +64,9 @@ for f in listdir_fullpath(folder):
                 # cv2.imshow("Aligned", faceAligned)
 
                 f_new = f.split(".")[0] + "_aligned.jpg"
-                imwrite(os.path.join(folder, f_new), faceAligned)
+                output_folder = args["output"]
+                cv2.imwrite(os.path.join(output_folder, f_new), faceAligned)
                 print("saved image " + f_new)
                 # key = cv2.waitKey(0)
-                if key==ord("x"):
-                    sys.exit("1")
+                #if key==ord("x"):
+                #    sys.exit("1")
