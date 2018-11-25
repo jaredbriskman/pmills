@@ -40,7 +40,7 @@ You could also use whatever python env solution is the flavour of the month.
 ## Usage
 
 ```shell
-$ python align_faces.py --shape-predictor shape_predictor_68_face_landmarks.dat --images photos
+$ python align_faces.py --shape-predictor shape_predictor_68_face_landmarks.dat --images photos --output output
 ```
 
 
