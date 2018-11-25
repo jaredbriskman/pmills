@@ -17,6 +17,10 @@ ap.add_argument("-i", "--images", required=True,
 help="path to image folder")
 args = vars(ap.parse_args())
 
+#https://stackoverflow.com/questions/120656/directory-tree-listing-in-python
+def listdir_fullpath(d):
+    return [os.path.join(d, f) for f in os.listdir(d)]
+
 # initialize dlib's face detector (HOG-based) and then create
 # the facial landmark predictor and the face aligner
 detector = dlib.get_frontal_face_detector()
@@ -25,11 +29,11 @@ fa = FaceAligner(predictor, desiredFaceWidth=256)
 
 # load the input image, resize it, and convert it to grayscale
 folder = args["images"]
-for f in os.listdir(folder):
+for f in listdir_fullpath(folder):
     # Only read images
     if not f.endswith(".jpg"):
         continue
-    image = cv2.imread(os.path.append(folder, f))
+    image = cv2.imread(f)
     image = imutils.resize(image, width=800)
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
      
