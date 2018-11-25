@@ -34,7 +34,7 @@ for f in listdir_fullpath(folder):
     if not f.endswith(".jpg"):
         continue
     image = cv2.imread(f)
-    image = imutils.resize(image, width=800)
+    image = imutils.resize(image, width=1600)
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
      
     # show the original input image and detect faces in the grayscale
