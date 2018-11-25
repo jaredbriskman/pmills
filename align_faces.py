@@ -52,11 +52,14 @@ for f in listdir_fullpath(folder):
             center_y = rect.bottom() - (rect.bottom() - rect.top())/2
             center_x =  rect.right() - (rect.right() - rect.left())/2
 
+            # filter based on predicted location of pmills' face
+            # (top left quadrant)
             if center_y < 350 and center_x < 600:
 
                 faceOrig = imutils.resize(image[y:y + h, x:x + w], width=1600)
                 faceAligned = fa.align(image, gray, bigrect)
          
+                # save aligned face to the output folder
                 f_new = f.split(".")[0].split("/")[-1] + "_aligned.jpg"
                 output_folder = args["output"]
                 cv2.imwrite(os.path.join(output_folder, f_new), faceAligned)
