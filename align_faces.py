@@ -49,12 +49,17 @@ for f in listdir_fullpath(folder):
             # using facial landmarks
             (x, y, w, h) = rect_to_bb(rect)
             bigrect = dlib.rectangle(top=(y-500), bottom=(y+h+500), left=(x-500), right=(x+w+500))
-            faceOrig = imutils.resize(image[y:y + h, x:x + w], width=256)
-            faceAligned = fa.align(image, gray, bigrect)
-     
-            # display the output images
-            cv2.imshow("Original", faceOrig)
-            cv2.imshow("Aligned", faceAligned)
-            key = cv2.waitKey(0)
-            if key==ord("x"):
-                sys.exit("1")
+            center_y = rect.bottom() - (rect.bottom() - rect.top())/2
+            center_x =  rect.right() - (rect.right() - rect.left())/2
+
+            if center_y < 350 and center_x < 600:
+
+                faceOrig = imutils.resize(image[y:y + h, x:x + w], width=256)
+                faceAligned = fa.align(image, gray, bigrect)
+         
+                # display the output images
+                cv2.imshow("Original", faceOrig)
+                cv2.imshow("Aligned", faceAligned)
+                key = cv2.waitKey(0)
+                if key==ord("x"):
+                    sys.exit("1")
