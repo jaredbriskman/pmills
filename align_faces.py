@@ -7,6 +7,7 @@ import argparse
 import imutils
 import dlib
 import cv2
+import os
  
 # construct the argument parser and parse the arguments
 ap = argparse.ArgumentParser()
@@ -23,8 +24,11 @@ predictor = dlib.shape_predictor(args["shape_predictor"])
 fa = FaceAligner(predictor, desiredFaceWidth=256)
 
 # load the input image, resize it, and convert it to grayscale
-folder = args["image"]
+folder = args["images"]
 for f in os.listdir(folder):
+    # Only read images
+    if not f.endswith(".jpg"):
+        continue
     image = cv2.imread(f)
     image = imutils.resize(image, width=800)
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
