@@ -35,7 +35,7 @@ for f in listdir_fullpath(folder):
     if not f.endswith(".jpg"):
         continue
     image = cv2.imread(f)
-    image = imutils.resize(image, width=800)
+    image = imutils.resize(image, width=1600)
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
      
     # show the original input image and detect faces in the grayscale
@@ -48,8 +48,9 @@ for f in listdir_fullpath(folder):
             # extract the ROI of the *original* face, then align the face
             # using facial landmarks
             (x, y, w, h) = rect_to_bb(rect)
+            bigrect = dlib.rectangle(top=(y-500), bottom=(y+h+500), left=(x-500), right=(x+w+500))
             faceOrig = imutils.resize(image[y:y + h, x:x + w], width=256)
-            faceAligned = fa.align(image, gray, rect)
+            faceAligned = fa.align(image, gray, bigrect)
      
             # display the output images
             cv2.imshow("Original", faceOrig)
